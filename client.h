@@ -2,6 +2,7 @@
 #define CLIENT_H
 
 #include <QWidget>
+#include <QDebug>
 #include <QToolButton>
 #include <QFileDialog>
 

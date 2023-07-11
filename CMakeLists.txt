@@ -17,6 +17,8 @@ set(PROJECT_SOURCES
         client.cpp
         client.h
         client.ui
+        clientconnect.cpp
+        clientconnect.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
