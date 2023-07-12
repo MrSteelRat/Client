@@ -19,6 +19,15 @@ set(PROJECT_SOURCES
         client.ui
         clientconnect.cpp
         clientconnect.h
+        registration_page.cpp
+        registration_page.h
+        registration_page.ui
+        access_screen.cpp
+        access_screen.h
+        access_screen.ui
+        style.css
+        attachment_menu.cpp
+        attachment_menu.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
