@@ -16,12 +16,14 @@ Client::~Client()
 
 void Client::on_btn_attachment_menu_clicked()
 {
-    QString filePath = QFileDialog::getOpenFileName(this, "Choose file", QDir::homePath(), "All Files (*)");
+return 0;
+}
 
-    // Performing actions on the selected file
-    if(!filePath.isEmpty())
-    {
-        // Processing the selected file
-        qDebug() << "Choose file: " << filePath;
-    }
+void Client::setStyle()
+{
+    QFile file(":/style.css");
+    file.open(QFile::ReadOnly);
+    QString styleSheet = QLatin1String(file.readAll());
+    this->setStyleSheet(styleSheet);
+
 }
