@@ -6,7 +6,6 @@ Client::Client(QWidget *parent)
     , ui(new Ui::Client)
 {
     ui->setupUi(this);
-    connect(ui->btn_attachment_menu, &QToolButton::clicked, this, &Client::on_btn_attachment_menu_clicked);
 }
 
 Client::~Client()
@@ -16,14 +15,15 @@ Client::~Client()
 
 void Client::on_btn_attachment_menu_clicked()
 {
-return 0;
+    QString filePath= QFileDialog::getOpenFileName(this, "Choose File", QDir::homePath(), "All Files(*)");
+    if(!filePath.isEmpty())
+        qDebug() << "Choose file: " << filePath;
 }
 
 void Client::setStyle()
 {
-    QFile file(":/style.css");
+    QFile file(":res/style.css");
     file.open(QFile::ReadOnly);
     QString styleSheet = QLatin1String(file.readAll());
     this->setStyleSheet(styleSheet);
-
 }

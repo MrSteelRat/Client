@@ -25,9 +25,8 @@ set(PROJECT_SOURCES
         access_screen.cpp
         access_screen.h
         access_screen.ui
-        style.css
-        attachment_menu.cpp
-        attachment_menu.h
+        open_file_menu.h
+        open_file_menu.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -35,17 +34,11 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
     )
-# Define target properties for Android with Qt 6 as:
-#    set_property(TARGET Client APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
-#                 ${CMAKE_CURRENT_SOURCE_DIR}/android)
-# For more information, see https://doc.qt.io/qt-6/qt-add-executable.html#target-creation
 else()
     if(ANDROID)
         add_library(Client SHARED
             ${PROJECT_SOURCES}
         )
-# Define properties for Android with Qt 5 after find_package() calls as:
-#    set(ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android")
     else()
         add_executable(Client
             ${PROJECT_SOURCES}
@@ -62,6 +55,16 @@ set_target_properties(Client PROPERTIES
     MACOSX_BUNDLE TRUE
     WIN32_EXECUTABLE TRUE
 )
+
+# Добавление папки "res" с файлом "style.css"
+set(RESOURCE_FILES
+    res/style.css
+)
+
+target_sources(Client PRIVATE ${RESOURCE_FILES})
+
+# Копирование папки "res" в каталог сборки
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/res DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
 install(TARGETS Client
     BUNDLE DESTINATION .

@@ -15,6 +15,9 @@ public:
     explicit accessScreen(QWidget *parent = nullptr);
     ~accessScreen();
 
+private slots:
+    void on_btn_submit_clicked();
+
 private:
     Ui::accessScreen *ui;
 };

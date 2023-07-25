@@ -20,6 +20,8 @@ public:
 
 private slots:
 
+    void on_btn_attachment_menu_clicked();
+
 private:
     Ui::Client *ui;
     void setStyle();

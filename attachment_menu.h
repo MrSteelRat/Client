@@ -4,13 +4,12 @@
 #include <QFileDialog>
 #include <QToolBar>
 #include <QDebug>
+#include <QWidget>
+#include <QPushButton>
 
 class attachmentMenu
 {
-public:
-    attachmentMenu();
-private slots:
-    void on_btn_attachment_menu_clicked();
+
 };
 
 #endif // ATTACHMENTMENU_H
